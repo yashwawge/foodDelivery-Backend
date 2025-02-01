@@ -2,6 +2,7 @@ const express = require('express');
 
 const serverConfig = require('./config/serverConfig');
 const connectDB = require('./config/dbConfig');
+const User = require('./schema/userSchema');
 
 const app = express();
 
@@ -13,5 +14,16 @@ app.listen(serverConfig.PORT, async ()=>{
     
     await connectDB();
     console.log(`server started at port: ${serverConfig.PORT}...!!`);
+
+    // const newUser = await User.create({
+    //     email: "abx@gmail.com",
+    //     password: "1256890",
+    //     firstName: "Johnathan",
+    //     lastName:"Walter",
+    //     mobileNumber:'0123456789'
+    // });
+
+    // console.log("Created new user");
+    // console.log(newUser);
 });
 
