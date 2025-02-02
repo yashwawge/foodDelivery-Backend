@@ -3,12 +3,19 @@ const express = require('express');
 const serverConfig = require('./config/serverConfig');
 const connectDB = require('./config/dbConfig');
 const User = require('./schema/userSchema');
+const userRouter = require('./routes/userRoutes');
+const cartRouter = require('./routes/cartRoutes');
 
 const app = express();
 
 app.use(express.json());
 app.use(express.text());
 app.use(express.urlencoded({extended : true}));
+
+//Router middleware
+//If your request start with users then handle it with userRouter
+app.use('/users',userRouter);  //connects the router to the server
+app.use('/carts',cartRouter);
 
 app.listen(serverConfig.PORT, async ()=>{
     
@@ -19,7 +26,7 @@ app.listen(serverConfig.PORT, async ()=>{
     //     email: "abx@gmail.com",
     //     password: "1256890",
     //     firstName: "Johnathan",
-    //     lastName:"Walter",
+    //     lastName: "Walter",
     //     mobileNumber:'0123456789'
     // });
 
