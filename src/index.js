@@ -5,6 +5,7 @@ const connectDB = require('./config/dbConfig');
 const User = require('./schema/userSchema');
 const userRouter = require('./routes/userRoutes');
 const cartRouter = require('./routes/cartRoutes');
+const authRouter = require('./routes/authRoute');
 
 const app = express();
 
@@ -16,6 +17,7 @@ app.use(express.urlencoded({extended : true}));
 //If your request start with users then handle it with userRouter
 app.use('/users',userRouter);  //connects the router to the server
 app.use('/carts',cartRouter);
+app.use('/auth',authRouter);
 
 app.listen(serverConfig.PORT, async ()=>{
     
