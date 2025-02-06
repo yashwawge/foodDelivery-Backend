@@ -10,6 +10,7 @@ const authRouter = require('./routes/authRoute');
 const uploader = require('./middlewares/multerMiddleware');
 const cloudinary = require('./config/cloudinaryConfig');
 const fs = require('fs/promises');
+const productRouter = require('./routes/productRoute');
 
 const app = express();
 
@@ -23,6 +24,7 @@ app.use(express.urlencoded({extended : true}));
 app.use('/users',userRouter);  //connects the router to the server
 app.use('/carts',cartRouter);
 app.use('/auth',authRouter);
+app.use('/products',productRouter);
 
 app.post('/photo',uploader.single('incomming file') ,async (req,res)=>{
 
