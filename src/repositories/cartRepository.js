@@ -5,10 +5,10 @@ async function createCart(userId){
 
     try{
 
-        const newCart = await cart.create({
+        const newCart = await Cart.create({
             user: userId,
         })
-        return cart;
+        return newCart;
     }catch(error){
         if(error.name == 'ValidationError'){
 
