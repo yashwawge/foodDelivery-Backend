@@ -28,14 +28,6 @@ app.use('/auth',authRouter);
 app.use('/products',productRouter);
 app.use('/orders',orderRouter);
 
-app.post('/photo',uploader.single('incomming file') ,async (req,res)=>{
-
-    console.log(req.file);
-    const result = await cloudinary.uploader.upload(req.file.path);
-    console.log("result from cloudinary: ",result);
-    await fs.unlink(req.file.path);
-    return res.json({message: 'ok'});
-})
 
 app.listen(serverConfig.PORT, async ()=>{
     
